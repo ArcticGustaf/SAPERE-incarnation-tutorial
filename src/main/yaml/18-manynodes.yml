@@ -1,0 +1,9 @@
+incarnation: sapere
+
+network-model:
+  type: ConnectWithinDistance
+  parameters: [0.7]
+  
+deployments:
+  type: Circle
+  parameters: [30000, 0, 0, 10]

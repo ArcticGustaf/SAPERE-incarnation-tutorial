@@ -41,6 +41,12 @@ File(rootProject.rootDir.path + "/src/main/yaml").listFiles()
     .sortedBy { it.nameWithoutExtension }
     .forEach {
         val task by tasks.register<JavaExec>(it.nameWithoutExtension) {
+            javaLauncher.set(
+                javaToolchains.launcherFor {
+                    languageVersion.set(JavaLanguageVersion.of(19))
+                    vendor.set(JvmVendorSpec.ADOPTIUM)
+                }
+            )
             group = alchemistGroup
             description = "Launches simulation ${it.nameWithoutExtension}"
             mainClass.set("it.unibo.alchemist.Alchemist")
